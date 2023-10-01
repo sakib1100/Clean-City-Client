@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from './Compunent/Navbar/Navbar';
-
 import About from './Pages/About';
 import Service from './Pages/Service';
 import Login from './Pages/Login';
@@ -10,6 +9,12 @@ import Home from './Pages/Home/Home';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import PrivetRoute from './Authentication/PrivetRoute';
+import AdminRoute from './Authentication/AdminRoute';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import AddService from './Pages/Dashboard/AddService';
+import SignIn from './Pages/SignIn';
 function App() {
 
 useEffect(() => {
@@ -19,13 +24,17 @@ useEffect(() => {
     <div>
 <Navbar />
 
-
 <Routes>
   
   <Route path='/' element={<Home />} />
   <Route path='/home' element={<Home />}></Route>
   <Route path='/about' element={<About />}></Route>
-  <Route path='/service' element={<Service />}></Route>
+  <Route path='/service' element={<PrivetRoute> <Service /></PrivetRoute>}></Route>
+    <Route path='/dashboard'  element={<AdminRoute> <Dashboard /> </AdminRoute>}>
+      <Route path='addService' element={<AddService />} />
+      <Route path='makeAdmin' element={<MakeAdmin />} />
+     </Route>
+  <Route path='/signin' element={<SignIn />} />
   <Route path='/contact' element={<Contact />}></Route>
   <Route path='/login' element={<Login />}></Route>
 </Routes>
