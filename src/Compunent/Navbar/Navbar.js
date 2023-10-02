@@ -1,9 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import UseAdmin from '../../hooks/UseAdmin';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
-  const [admin] = UseAdmin();
+  
+  const [user] = useAuthState(auth);
+
+const logOut = () => {
+  signOut(auth);
+}
+
     return (
         <div>
            <div className="drawer drawer-end" >
@@ -23,13 +32,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal gap-x-1">
 
           <li><NavLink to='/home'>Home</NavLink></li>
-         {
-          admin &&  <li><NavLink to='/dashboard/addService'>Dashboard</NavLink></li>
-         }
+     
+        <li><NavLink to='/dashboard/addService'>Dashboard</NavLink></li>
+   
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/service'>Services</NavLink></li>
           {/* <li><NavLink to="/contact">Contact</NavLink></li> */}
-          <li><NavLink to="/login">Login</NavLink></li>
+          {
+            user ? <button onClick={logOut}>Sign Out</button> : <li><NavLink to="/login">Login</NavLink></li>
+          }
           
         </ul>
       </div>
@@ -42,13 +53,13 @@ const Navbar = () => {
     <ul className="menu p-4 w-80 min-h-full bg-base-200">
  
          <li><NavLink to='/home'>Home</NavLink></li>
-         {
-          admin &&  <li><NavLink to='/dashboard/addService'>Dashboard</NavLink></li>
-         }
+           <li><NavLink to='/dashboard/addService'>Dashboard</NavLink></li>
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/service'>Services</NavLink></li>
           {/* <li><NavLink to="/contact">Contact</NavLink></li> */}
-          <li><NavLink to="/login">Login</NavLink></li>
+          {
+            user ? <button onClick={logOut}>Sign Out</button> : <li><NavLink to="/login">Login</NavLink></li>
+          }
       
     </ul>
     

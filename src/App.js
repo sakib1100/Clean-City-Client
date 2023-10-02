@@ -10,11 +10,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import PrivetRoute from './Authentication/PrivetRoute';
-import AdminRoute from './Authentication/AdminRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import AddService from './Pages/Dashboard/AddService';
 import SignIn from './Pages/SignIn';
+import RequireAuth from './Authentication/PrivetRoute';
 function App() {
 
 useEffect(() => {
@@ -30,8 +30,10 @@ useEffect(() => {
   <Route path='/home' element={<Home />}></Route>
   <Route path='/about' element={<About />}></Route>
   <Route path='/service' element={<PrivetRoute> <Service /></PrivetRoute>}></Route>
-    <Route path='/dashboard'  element={<AdminRoute> <Dashboard /> </AdminRoute>}>
-      <Route path='addService' element={<AddService />} />
+    <Route path='/dashboard'  element={<PrivetRoute> <Dashboard /> </PrivetRoute>}>
+      <Route path='addService' element={<RequireAuth>
+        <AddService />
+      </RequireAuth>} />
       <Route path='makeAdmin' element={<MakeAdmin />} />
      </Route>
   <Route path='/signin' element={<SignIn />} />

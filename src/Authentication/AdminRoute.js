@@ -1,16 +1,16 @@
-import React, { Children } from 'react';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import UseAdmin from '../hooks/UseAdmin';
+// import React, { Children } from 'react';
+// import { Navigate, Outlet, useLocation } from 'react-router-dom';
+// import UseAdmin from '../hooks/UseAdmin';
 
-const AdminRoute = ({children}) => {
+// const AdminRoute = ({children}) => {
 
-const [admin] = UseAdmin();
+// const [admin] = UseAdmin();
 
-if(!admin){
-    return <Navigate to="/"  replace />;
-}
+// if(!admin){
+//     return <Navigate to="/"  replace />;
+// }
 
-    return children;
-};
+//     return children;
+// };
 
-export default AdminRoute;
+// export default AdminRoute;
