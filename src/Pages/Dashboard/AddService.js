@@ -40,8 +40,7 @@ const image =  event.target.files[0];
 
 const formData = new FormData();
 formData.set('image',image);
-axios.post('https://api.imgbb.com/1/upload?key=29a23a67a9f901005094a2aa57ce7805',
- formData)
+axios.post('https://api.imgbb.com/1/upload?key=29a23a67a9f901005094a2aa57ce7805',formData)
 .then((res) => {
   setImageUrl(res.data.data.display_url);
   setLoading(false);
@@ -76,7 +75,7 @@ axios.post('https://api.imgbb.com/1/upload?key=29a23a67a9f901005094a2aa57ce7805'
             <label className="label">
               <span className="label-text">Image</span>
             </label>
-            <input  onChange={handleImage} type="file"  className="input   border-accent border input-bordered" required />
+            <input  onChange={handleImage} type="file"  className="input  border-accent border input-bordered" required />
            
           </div>
           <div className="form-control mt-6">
