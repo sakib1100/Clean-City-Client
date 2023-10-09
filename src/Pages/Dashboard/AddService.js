@@ -16,7 +16,7 @@ const AddService = () => {
    const FullData = {
     ...datas,image:imageUrl,
    }
-   fetch('http://localhost:5000/post-data', {
+   fetch('https://clean-city-server.vercel.app//post-data', {
     method: 'POST',
     body: JSON.stringify(
       FullData
