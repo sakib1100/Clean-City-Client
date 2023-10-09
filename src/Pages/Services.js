@@ -5,7 +5,7 @@ const Services = ({data,handleDelete}) => {
     return (
         <div className=''>
           <div class="mx-4 my-4  block  max-w-[18rem] rounded-lg bg-light shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-  <div class=" relative overflow-hidden bg-cover bg-no-repeat">
+  <div class="relative overflow-hidden bg-cover bg-no-repeat">
     <img
       class="rounded-t-lg h-40 w-full"
       src={image}
