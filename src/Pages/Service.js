@@ -5,7 +5,7 @@ import Services from './Services';
 const Service = () => {
     const [service,setService] = useState([]);
     useEffect(() => {
-        const url = 'https://clean-city-server.vercel.app/get-service';
+        const url = 'https://clean-city-server-rander.onrender.com/get-service';
       fetch(url) 
       .then(res => res.json())
       .then(data => setService(data))
@@ -16,7 +16,7 @@ const Service = () => {
         const proced = window.confirm('Are you sure you want to delete?');
         if(proced){
             console.log('data delete successfully',id)
-         const url = `https://clean-city-server.vercel.app/get-service/${id}`;
+         const url = `https://clean-city-server-rander.onrender.com/get-service/${id}`;
          fetch(url,{
             method: 'DELETE'
          })
